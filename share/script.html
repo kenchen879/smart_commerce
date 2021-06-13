@@ -1,0 +1,35 @@
+<!-- Main Js File -->
+<script src="../../js/script.js"></script>
+<button type="button" id="BackTop" class="toTop-arrow"></button>
+<script>
+    $(function() {
+        $('#BackTop').click(function() {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 333);
+        });
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $('#BackTop').fadeIn(222);
+            } else {
+                $('#BackTop').stop().fadeOut(222);
+            }
+        }).scroll();
+    });
+</script>
+<script>
+    var oTimerId;
+
+    function Timeout() {
+        alert("\n您好\n閒置時間過長!\n請登入系統\n謝謝!!");
+        location.href = ('../member/logout.php');
+    }
+
+    function ReCalculate() {
+        clearTimeout(oTimerId);
+        oTimerId = setTimeout('Timeout()', 1 * 60 * 60 * 1000); //js 是用毫秒計算
+    }
+    document.onmousedown = ReCalculate;
+    document.onmousemove = ReCalculate;
+    ReCalculate();
+</script>
